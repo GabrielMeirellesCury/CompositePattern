@@ -41,19 +41,85 @@ public class Menu {
     }
 
     public static void carregarCatalogo() {
-        ProdutoSimples burger = new ProdutoSimples("Hamburguer", 30);
+        //adicionando combos e produtos no menu
+        ProdutoSimples burger = new ProdutoSimples("Hamburguer Evandro", 30);
+        ProdutoSimples burger2 = new ProdutoSimples("Hamburguer Americo", 37);
+        ProdutoSimples burger3 = new ProdutoSimples("Hamburguer Murta", 32);
+        ProdutoSimples burger4 = new ProdutoSimples("Hamburguer Alexandre", 43);
+        ProdutoSimples burger5 = new ProdutoSimples("Hamburguer Tinos", 29);
         ProdutoSimples batataM = new ProdutoSimples("Batata media", 16);
-        ProdutoSimples refriM = new ProdutoSimples("Refrigerante medio", 12);
+        ProdutoSimples batataP = new ProdutoSimples("Batata pequena", 12);
+        ProdutoSimples batataG = new ProdutoSimples("Batata grande", 20);
+        ProdutoSimples refriM = new ProdutoSimples("Refrigerante medio", 9);
+        ProdutoSimples refriP = new ProdutoSimples("Refrigerante pequeno", 7);
+        ProdutoSimples refriG = new ProdutoSimples("Refrigerante grande", 12);
 
-        Combo combo1 = new Combo("Combo 1", 0);
+        ProdutoSimples sobremesa1 = new ProdutoSimples("Casquinha", 3);
+        ProdutoSimples sobremesa2 = new ProdutoSimples("Milkshake de chocolate", 12);
+        ProdutoSimples sobremesa3 = new ProdutoSimples("Pudim", 8);
+        ProdutoSimples sobremesa4 = new ProdutoSimples("Acai", 15);
+
+        //Combos:
+        Combo combo1 = new Combo("Combo Evandro", 0);
         combo1.adicionar(burger);
         combo1.adicionar(batataM);
         combo1.adicionar(refriM);
 
+        Combo combo2 = new Combo("Combo Murtada Dupla", 0);
+        combo2.adicionar(burger3);
+        combo2.adicionar(burger3);
+        combo2.adicionar(batataG);
+        combo2.adicionar(refriG);
+
+        Combo combo3 = new Combo("Combo Infantil", 0);
+        combo3.adicionar(burger5);
+        combo3.adicionar(batataP);
+        combo3.adicionar(refriP);
+        combo3.adicionar(sobremesa1);
+
+        Combo combo4 = new Combo("Combo Premium Alexandre", 0);
+        combo4.adicionar(burger4);
+        combo4.adicionar(batataG);
+        combo4.adicionar(refriG);
+        combo4.adicionar(sobremesa2);
+
+        Combo combo5 = new Combo("Combo Americada", 0);
+        combo5.adicionar(burger2);
+        combo5.adicionar(batataM);
+        combo5.adicionar(refriG);
+        combo5.adicionar(sobremesa3);
+
+        Combo combo6 = new Combo("Combo Fitness", 0);
+        combo6.adicionar(burger5);
+        combo6.adicionar(refriP);
+        combo6.adicionar(sobremesa4);
+
+        //adicionando no catalogo:
         catalogo.add(combo1);
+        catalogo.add(combo2);
+        catalogo.add(combo3);
+        catalogo.add(combo4);
+        catalogo.add(combo5);
+        catalogo.add(combo6);
+
         catalogo.add(burger);
+        catalogo.add(burger2);
+        catalogo.add(burger3);
+        catalogo.add(burger4);
+        catalogo.add(burger5);
+
+        catalogo.add(batataP);
         catalogo.add(batataM);
+        catalogo.add(batataG);
+
+        catalogo.add(refriP);
         catalogo.add(refriM);
+        catalogo.add(refriG);
+
+        catalogo.add(sobremesa1);
+        catalogo.add(sobremesa2);
+        catalogo.add(sobremesa3);
+        catalogo.add(sobremesa4);
     }
 
     public static void mostrarCatalogo() {
@@ -92,7 +158,7 @@ public class Menu {
             remover = scan.nextLine();
         } while (!remover.equalsIgnoreCase("s") && !remover.equalsIgnoreCase("n"));
         if (remover.equalsIgnoreCase("s")) {
-            System.out.print("Digite o indice do produto (no cardapio) que deseja remover: ");
+            System.out.print("Digite o indice do produto do carrinho que deseja remover: ");
             int i = scan.nextInt();
             carrinho.remover((i - 1));
         }

@@ -33,7 +33,7 @@ public class Combo implements IProduto {
         System.out.println(prefixo + " - " + nome + " (R$" + getPreco() + ") ");
         int i = 1;
         for (IProduto p : itens) {
-            p.exibir("      " + Integer.toString(i));
+            p.exibir("      " + Integer.toString(i)); // dei 2 tabs pq no carrinho os itens do combo ficam no mesmo "nivel" q o combo e eu n sei oq fazer pra arrumar.
             i++;
         }
     }
