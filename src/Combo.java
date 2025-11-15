@@ -3,13 +3,11 @@ import java.util.List;
 
 public class Combo implements IProduto {
     protected String nome;
-    protected double preco;
     protected List<IProduto> itens = new ArrayList<>();
 
 
-    public Combo(String nome, double preco) {
+    public Combo(String nome) {
         this.nome = nome;
-        this.preco = 0;
     }
 
     @Override
@@ -19,7 +17,7 @@ public class Combo implements IProduto {
 
     @Override
     public double getPreco() {
-        preco = 0;
+        double preco = 0;
         for (IProduto p : itens) {
             preco += p.getPreco();
         }

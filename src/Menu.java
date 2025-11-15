@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Menu {
 
     private static List<IProduto> catalogo = new ArrayList<>();
-    private static Carrinho carrinho = new Carrinho("Carrinho", 0);
+    private static Carrinho carrinho = new Carrinho("Carrinho");
     private static Scanner scan = new Scanner(System.in);
 
 
@@ -41,6 +41,7 @@ public class Menu {
     }
 
     public static void carregarCatalogo() {
+        catalogo.clear();
         //adicionando combos e produtos no menu
         ProdutoSimples burger = new ProdutoSimples("Hamburguer Evandro", 30);
         ProdutoSimples burger2 = new ProdutoSimples("Hamburguer Americo", 37);
@@ -60,36 +61,36 @@ public class Menu {
         ProdutoSimples sobremesa4 = new ProdutoSimples("Acai", 15);
 
         //Combos:
-        Combo combo1 = new Combo("Combo Evandro", 0);
+        Combo combo1 = new Combo("Combo Evandro");
         combo1.adicionar(burger);
         combo1.adicionar(batataM);
         combo1.adicionar(refriM);
 
-        Combo combo2 = new Combo("Combo Murtada Dupla", 0);
+        Combo combo2 = new Combo("Combo Murtada Dupla");
         combo2.adicionar(burger3);
         combo2.adicionar(burger3);
         combo2.adicionar(batataG);
         combo2.adicionar(refriG);
 
-        Combo combo3 = new Combo("Combo Infantil", 0);
+        Combo combo3 = new Combo("Combo Infantil");
         combo3.adicionar(burger5);
         combo3.adicionar(batataP);
         combo3.adicionar(refriP);
         combo3.adicionar(sobremesa1);
 
-        Combo combo4 = new Combo("Combo Premium Alexandre", 0);
+        Combo combo4 = new Combo("Combo Premium Alexandre");
         combo4.adicionar(burger4);
         combo4.adicionar(batataG);
         combo4.adicionar(refriG);
         combo4.adicionar(sobremesa2);
 
-        Combo combo5 = new Combo("Combo Americada", 0);
+        Combo combo5 = new Combo("Combo Americada");
         combo5.adicionar(burger2);
         combo5.adicionar(batataM);
         combo5.adicionar(refriG);
         combo5.adicionar(sobremesa3);
 
-        Combo combo6 = new Combo("Combo Fitness", 0);
+        Combo combo6 = new Combo("Combo Fitness");
         combo6.adicionar(burger5);
         combo6.adicionar(refriP);
         combo6.adicionar(sobremesa4);
@@ -149,7 +150,7 @@ public class Menu {
 
     public static void mostrarCarrinho() {
 
-        carrinho.exibir("");
+        carrinho.exibir();
         String remover;
         scan.nextLine();
         System.out.println("Preco total: " + carrinho.getPreco());
