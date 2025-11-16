@@ -19,11 +19,11 @@ public class Carrinho {
         try {
             nomeProdutoRemovido = itens.get(idProduto).getNome();
             itens.remove(idProduto);
+            System.out.println("Produto " + nomeProdutoRemovido + " removido!");
         } catch (Exception e) {
             System.out.println("Indice nao existente ou não numerico!");
 //            e.printStackTrace();
         }
-        System.out.println("Produto " + nomeProdutoRemovido + " removido!");
     }
 
     public double getPreco() {

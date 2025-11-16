@@ -31,7 +31,7 @@ public class Combo implements IProduto {
         System.out.println(prefixo + " - " + nome + " (R$" + getPreco() + ") ");
         int i = 1;
         for (IProduto p : itens) {
-            p.exibir("      " + Integer.toString(i)); // dei 2 tabs pq no carrinho os itens do combo ficam no mesmo "nivel" q o combo e eu n sei oq fazer pra arrumar.
+            p.exibir(prefixo + "    " + Integer.toString(i));
             i++;
         }
     }
@@ -45,10 +45,10 @@ public class Combo implements IProduto {
         try {
             nomeProdutoRemovido = itens.get(idProduto).getNome();
             itens.remove(idProduto);
+            System.out.println("Produto " + nomeProdutoRemovido + " removido!");
         } catch (Exception e) {
             System.out.println("Indice nao existente ou não numerico!");
 //            e.printStackTrace();
         }
-        System.out.println("Produto " + nomeProdutoRemovido + " removido!");
     }
 }
