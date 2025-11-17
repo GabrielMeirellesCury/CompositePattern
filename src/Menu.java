@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,30 +19,46 @@ public class Menu {
             System.out.println("Adicionar produto (2)");
             System.out.println("Ver carrinho (3)");
             System.out.println("Encerrar compra (4)");
+            try {
+                opcao = scan.nextInt();
 
-            opcao = scan.nextInt();
-
-            switch (opcao) {
-                case 1:
-                    mostrarCatalogo();
-                    break;
-                case 2:
-                    adicionarProduto();
-                    break;
-                case 3:
-                    mostrarCarrinho();
-                    break;
-                case 4:
-                    encerrarCompra();
-                    break;
-                default:
-                    System.out.println("Opcao invalida,digite novamente! \n\n");
+                switch (opcao) {
+                    case 1:
+                        mostrarCatalogo();
+                        break;
+                    case 2:
+                        adicionarProduto();
+                        break;
+                    case 3:
+                        mostrarCarrinho();
+                        break;
+                    case 4:
+                        encerrarCompra();
+                        break;
+                    default:
+                        System.out.println("Opcao invalida,digite novamente! \n\n");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("valor digitado não é um número");
+                scan.nextLine();
+                opcao = 5;
             }
         } while (opcao != 4);
     }
 
     public static void carregarCatalogo() {
         catalogo.clear();
+
+        //adicionando e removendo só para o remover do combo ser utilizado
+        ProdutoSimples remov = new ProdutoSimples("Remover jaja", 11);
+        ProdutoSimples rem2 = new ProdutoSimples("Mesma coisa", 12);
+        Combo comboRemover = new Combo("Removendo");
+        comboRemover.adicionar(remov);
+        comboRemover.adicionar(rem2);
+        comboRemover.remover(remov);
+        comboRemover.remover(rem2);
+        //no fim nem mostra pro usuário, mas só para mostrar partes de um exemplo onde usaria
+
         //adicionando combos e produtos no menu
         ProdutoSimples burger = new ProdutoSimples("Hamburguer Evandro", 30);
         ProdutoSimples burger2 = new ProdutoSimples("Hamburguer Americo", 37);
@@ -143,9 +160,15 @@ public class Menu {
             carrinho.adicionar(catalogo.get(indiceProduto - 1));
             System.out.println("Produto " + catalogo.get(indiceProduto - 1).getNome() + " adicionado ao carrinho!");
             System.out.println();
-        } catch (Exception e) {
-            System.out.println("Indice não existente ou não numerico");
+        } catch (InputMismatchException e) {
+            System.out.println("Indice não numerico");
+            scan.nextLine();
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Indice não existente!");
+            scan.nextLine();
         }
+
+
     }
 
     public static void mostrarCarrinho() {
@@ -158,13 +181,35 @@ public class Menu {
             System.out.println("Deseja remover algum produto do carrinho? (s/n)");
             remover = scan.nextLine();
         } while (!remover.equalsIgnoreCase("s") && !remover.equalsIgnoreCase("n"));
+
         if (remover.equalsIgnoreCase("s")) {
-            System.out.print("Digite o indice do produto do carrinho que deseja remover: ");
-            int i = scan.nextInt();
-            carrinho.remover((i - 1));
+            removerDoCarrinho();
+        }
+    }
+
+    private static void removerDoCarrinho() {
+        boolean indiceValido = false;
+        while (!indiceValido) {
+            try {
+                System.out.print("Digite o índice do produto do carrinho que deseja remover: ");
+                int i = scan.nextInt();
+                scan.nextLine();
+
+                carrinho.remover(i - 1);
+
+                indiceValido = true;
+
+            } catch (InputMismatchException e) {
+                System.out.println("O valor digitado não é um número!");
+                scan.nextLine();
+
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Índice inexistente no carrinho!");
+            }
         }
         System.out.println();
     }
+
 
     public static void encerrarCompra() {
         scan.nextLine();

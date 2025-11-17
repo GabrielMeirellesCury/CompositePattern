@@ -15,21 +15,20 @@ public class Carrinho {
     }
 
     public void remover(int idProduto) {
-        String nomeProdutoRemovido = "";
         try {
-            nomeProdutoRemovido = itens.get(idProduto).getNome();
+            String nomeProdutoRemovido = itens.get(idProduto).getNome();
             itens.remove(idProduto);
             System.out.println("Produto " + nomeProdutoRemovido + " removido!");
-        } catch (Exception e) {
-            System.out.println("Indice nao existente ou não numerico!");
-//            e.printStackTrace();
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Índice inexistente no carrinho!");
         }
     }
+
 
     public double getPreco() {
         double precoTotal = 0;
         for (IProduto p : itens) {
-            // Delega o cálculo do preço a cada item
             precoTotal += p.getPreco();
         }
         return precoTotal;

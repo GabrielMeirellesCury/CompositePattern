@@ -40,15 +40,8 @@ public class Combo implements IProduto {
         itens.add(produto);
     }
 
-    public void remover(int idProduto) {
-        String nomeProdutoRemovido = "";
-        try {
-            nomeProdutoRemovido = itens.get(idProduto).getNome();
-            itens.remove(idProduto);
-            System.out.println("Produto " + nomeProdutoRemovido + " removido!");
-        } catch (Exception e) {
-            System.out.println("Indice nao existente ou não numerico!");
-//            e.printStackTrace();
-        }
+    public void remover(IProduto Produto) {
+            itens.remove(Produto);
     }
+
 }
