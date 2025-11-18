@@ -41,7 +41,7 @@ public class Combo implements IProduto {
     }
 
     public void remover(IProduto Produto) {
-            itens.remove(Produto);
+        itens.remove(Produto);
     }
 
 }
